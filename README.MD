@@ -13,4 +13,7 @@ There's two ways to use this one-pager:
 There's three expected columns: **title**, **description** and **embed_id**
 The first row is the Story title & description (and your instance URL), any row after that renders as a separate card on the story. The 'embed_id' is the public ID given by Looker when you make the Look public (`{{instance_url}}/embed/public/{{look_public_id}}`).
 
+
+<h2>Demo</h2>
+
 [Try it out here!](https://rawgit.com/brechtv/looker_datastory/master/index.html)
