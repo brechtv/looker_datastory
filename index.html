@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="A HTML one-pager to load Looks as a 'data story'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Looker Datastory</title>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <meta name="apple-mobile-web-app-title" content="a Looker Datastory">
     <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
@@ -74,6 +74,7 @@
     </style>
   </head>
   <body class="mdl-story mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <input type="checkbox" id="dark_style" class="mdl-checkbox__input">
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 <!--   <div class="mdl-tabs__tab-bar">
     <a href="#story" class="mdl-tabs__tab is-active">Story</a>
@@ -84,9 +85,11 @@
       <main class="story_container mdl-layout__content">
         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--0dp">
           <div class="mdl-cell mdl-cell--12-col story_title_container">
+
           </div>
         </section>
       </main>
+
     </div>
   </div>
   <div class="mdl-tabs__panel" id="sheet">
@@ -94,10 +97,22 @@
 </div>
 </div>
 </div>
+
+
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <script>
+
+    $('#dark_style').change(
+    function(){
+        if ($(this).is(':checked')) {
+            $(".story_container").css("color", "#FFFFFF")
+            $(".mdl-card").css("background-color", "#959595")
+            $(".mdl-tabs__tab-bar").css("background-color", "#BBB")
+            $(".story_container").css("background-color", "#353535")
+        }
+    });
 
     function getParameterByName(name) {
           var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -144,6 +159,7 @@
               }
           })
       })
+
     </script>
   </body>
 </html>
