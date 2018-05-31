@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Looker Datastory</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+    <style type="text/css">
+      .mdl-card{border-radius:10px;}
+      .section--center{border-radius:10px;}
+      #loading{width:100%;height:100%;vertical-align:center;position:fixed;display:block;opacity:0.7;background-color:#fff;z-index:99;text-align:center;}
+      #loading-image{position:absolute;top:100px;left:240px;z-index:100;}
+      .mdl-tabs__tab-bar{background-color:#7e64e0;}
+      .mdl-tabs__tab{color:#FFFFFF;}
+      .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active{color:yellow;}
+      .mdl-tabs__tab{font-size:10px;}
+      html,body{font-family:'Roboto','Helvetica',sans-serif;margin:0;padding:0;}
+      a{color:#7e64e0;}
+      .mdl-story .mdl-layout__header-row{padding-left:40px;}
+      .mdl-story .mdl-layout.is-small-screen .mdl-layout__header-row h3{font-size:inherit;}
+      .mdl-story .mdl-layout__tab-bar-button{display:none;}
+      .mdl-story .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button{display:none;}
+      .mdl-story .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,.mdl-story .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container{overflow:visible;}
+      .mdl-story .mdl-layout__tab-bar-container{height:64px;}
+      .mdl-story .mdl-layout__tab-bar{padding:0;padding-left:16px;box-sizing:border-box;height:100%;width:100%;}
+      .mdl-story .mdl-layout__tab-bar .mdl-layout__tab{height:64px;line-height:64px;}
+      .mdl-story .mdl-layout__tab-bar .mdl-layout__tab.is-active::after{background-color:white;height:4px;}
+      .mdl-story main > .mdl-layout__tab-panel{padding:8px;padding-top:48px;}
+      .mdl-story .mdl-card{height:auto;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+      .mdl-story .mdl-card > *{height:auto;}
+      .mdl-story .mdl-card .mdl-card__supporting-text{margin:40px;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;padding:0;color:inherit;width:calc(100% - 80px);}
+      .mdl-story.mdl-story .mdl-card__supporting-text h4{margin-top:0;margin-bottom:20px;}
+      .mdl-story .mdl-card__actions{margin:0;padding:4px 40px;color:inherit;}
+      .mdl-story .mdl-card__actions a{color:#00BCD4;margin:0;}
+      .mdl-story .mdl-card__actions a:hover,.mdl-story .mdl-card__actions a:active{color:inherit;background-color:transparent;}
+      .mdl-story .mdl-card__supporting-text + .mdl-card__actions{border-top:1px solid rgba(0,0,0,0.12);}
+      .mdl-story #add{position:absolute;right:40px;top:36px;z-index:999;}
+      .mdl-story .mdl-layout__content section:not(:last-of-type){position:relative;margin-bottom:48px;}
+      .mdl-story section.section--center{max-width:860px;}
+      .mdl-story #features section.section--center{max-width:620px;}
+      .mdl-story section > header{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;}
+      .mdl-story section > .section__play-btn{min-height:200px;}
+      .mdl-story section > header > .material-icons{font-size:3rem;}
+      .mdl-story section > button{position:absolute;z-index:99;top:8px;right:8px;}
+      .mdl-story section .section__text{-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;padding-top:8px;}
+      .mdl-story section .section__text h5{font-size:inherit;margin:0;margin-bottom:0.5em;}
+      .mdl-story section .section__text a{text-decoration:none;}
+      .mdl-story section .section__circle-container > .section__circle-container__circle{width:64px;height:64px;border-radius:32px;margin:8px 0;}
+      .mdl-story section.section--footer .section__circle--big{width:100px;height:100px;border-radius:50px;margin:8px 32px;}
+      .mdl-story .is-small-screen section.section--footer .section__circle--big{width:50px;height:50px;border-radius:25px;margin:8px 16px;}
+      .mdl-story section.section--footer{padding:64px 0;margin:0 -8px -8px -8px;}
+      .mdl-story section.section--center .section__text:not(:last-child){border-bottom:1px solid rgba(0,0,0,.13);}
+      .mdl-story .mdl-card .mdl-card__supporting-text > h3:first-child{margin-bottom:24px;}
+      .mdl-story .mdl-layout__tab-panel:not(#overview){background-color:white;}
+      .mdl-story #features section{margin-bottom:72px;}
+      .mdl-story #features h4,#features h5{margin-bottom:16px;}
+      .mdl-story .toc{border-left:4px solid #C1EEF4;margin:24px;padding:0;padding-left:8px;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+      .mdl-story .toc h4{font-size:0.9rem;margin-top:0;}
+      .mdl-story .toc a{color:#4DD0E1;text-decoration:none;font-size:16px;line-height:28px;display:block;}
+      .mdl-story .mdl-menu__container{z-index:99;}
+    </style>
+  </head>
+  <body class="mdl-story mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+<!--   <div class="mdl-tabs__tab-bar">
+    <a href="#story" class="mdl-tabs__tab is-active">Story</a>
+    <a href="#sheet" class="mdl-tabs__tab" id="sheet_tab">Looks</a>
+  </div> -->
+  <div class="mdl-tabs__panel is-active" id="story">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <main class="story_container mdl-layout__content">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--0dp">
+          <div class="mdl-cell mdl-cell--12-col story_title_container">
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="mdl-tabs__panel" id="sheet">
+  </div>
+</div>
+</div>
+</div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script>
+
+    function getParameterByName(name) {
+          var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+          return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+      }
+
+      var spreadsheet_id = (getParameterByName('spreadsheet_id') ? getParameterByName('spreadsheet_id') :'151wYbceiQIj8NEBiLCZNDFX1CEtirddu7tCOU4NR6AA')
+
+
+      var SPREADSHEET_PUBLIC_URL = 'https://spreadsheets.google.com/feeds/list/' + spreadsheet_id + '/od6/public/values?alt=json'
+
+      // var SPREADSHEET_EMBED_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQlttdQvPr3_Km-zSsYp4lnXpqe7gPEM2O482dJoBJF4w--5dMP8otQBS505VfB5-Ob0ocgO4wCo07V/pubhtml?gid=0&amp;chrome=false&amp;widget=true&amp;headers=false'
+
+      // var sheet = `<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--0dp"><div class="mdl-cell mdl-cell--12-col gsheet" style="text-align: center; color: #959595;"> <p>This story is kept in <a href="https://docs.google.com/spreadsheets/d/151wYbceiQIj8NEBiLCZNDFX1CEtirddu7tCOU4NR6AA/edit#gid=0" target="_blank">this Google sheet</a>, and updates live. <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="$(this).parent().parent().remove();"><i class="material-icons md-dark">close</i></button> </p></div><iframe height="500px"; src="` + SPREADSHEET_EMBED_URL + `"></iframe></div></section>`
+
+      $( document ).ready(function() {setTimeout(function(){ $("#sheet").append(sheet) }, 3000)})
+
+      var card_template = `<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"> <div class="mdl-card mdl-cell mdl-cell--12-col"> <div class="mdl-card__supporting-text"> <h4>{{card_title}}</h4> <p>{{card_description}}</p></div><div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"> <div class="mdl-tabs__panel is-active" id="card_{{card_number}}_viz"> <div class="mdl-card__supporting-text"> <iframe src='{{instance_url}}/embed/public/{{look_public_id}}' height='400px' frameborder='0'></iframe> </div></div><div class="mdl-tabs__tab-bar"> <a href="#card_{{card_number}}_viz" class="mdl-tabs__tab is-active">Visualization</a> <a href="{{instance_url}}/looks/{{look_public_id}}.csv?apply_formatting=true&apply_vis=true&download=true" target="_blank" download class="mdl-tabs__tab">Data</a> </div></div></section>`
+
+      $.getJSON(SPREADSHEET_PUBLIC_URL, function(data) {
+          var results = data.feed.entry;
+          var instance_url;
+          $.each(results, function(key, result) {
+              if (key == 0) {
+                  instance_url = result.gsx$publicid.$t;
+                  var title_data = {
+                      "story_title": result.gsx$title.$t,
+                      "story_description": result.gsx$description.$t
+                  }
+                  document.title = title_data.story_title;
+                  var title_template = `<h1 style="text-align: center; color:#7e64e0;">{{ story_title }}</h1><p>{{ story_description }}</p>`
+                  var title = Mustache.render(title_template, title_data)
+                  $(".story_title_container").append(title)
+              } else {
+                  var card_data = {
+                      "card_number": key,
+                      "card_title": result.gsx$title.$t,
+                      "card_description": result.gsx$description.$t,
+                      "look_public_id": result.gsx$publicid.$t,
+                      "instance_url": instance_url
+                  }
+                  var card = Mustache.render(card_template, card_data)
+                  $(".story_container").append(card)
+              }
+          })
+      })
+    </script>
+  </body>
+</html>
