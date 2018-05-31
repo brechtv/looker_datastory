@@ -17,3 +17,5 @@ The first row is the Story title & description (and your instance URL), any row 
 <h2>Demo</h2>
 
 [Try it out here!](https://rawgit.com/brechtv/looker_datastory/master/index.html)
+
+This story lives in [this spreadsheet](https://docs.google.com/spreadsheets/d/151wYbceiQIj8NEBiLCZNDFX1CEtirddu7tCOU4NR6AA/edit#gid=0)
