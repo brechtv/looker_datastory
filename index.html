@@ -74,42 +74,9 @@
               <div class="mdl-cell mdl-cell--12-col story_title_container">
               </div>
             </section>
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--0dp">
-              <button type="button" class="mdl-button show-modal"><i style="color: #656565;" class="material-icons">help_outline</i></button>
-            </section>
           </main>
         </div>
       </div>
-      <dialog class="mdl-dialog" style="color: #7e64e0; width: 60%;">
-      <div class="mdl-dialog__title">How-To</div>
-      <div class="mdl-dialog__content">
-        <p>
-          This 'datastory' is created live from a Google Spreadsheet. <a href="https://docs.google.com/spreadsheets/d/151wYbceiQIj8NEBiLCZNDFX1CEtirddu7tCOU4NR6AA/edit#gid=0" target="_blank">Here</a>'s an sample spreadsheet with some public looks.
-        </p>
-        <p>
-          To use your own data, copy the sample spreadsheet and <a href="https://support.google.com/docs/answer/37579">publish it to the web</a>. Then get the spreadsheet ID (found in the URL: <code>https://docs.google.com/spreadsheets/d/[SPREADSHEET_ID]/edit#gid=0</code>)
-        </p>
-        <p>
-          You can pass this ID as a URL parameter: <code>?spreadsheet_id=123</code> (<a href="index.html?spreadsheet_id=151wYbceiQIj8NEBiLCZNDFX1CEtirddu7tCOU4NR6AA">example</a>), or update the spreadsheet ID using the datastory options on the page.
-        </p>
-      </div>
-      <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button close">Close</button>
-      </div>
-      </dialog>
-      <script>
-      var dialog = document.querySelector('dialog');
-      var showModalButton = document.querySelector('.show-modal');
-      if (! dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-      }
-      showModalButton.addEventListener('click', function() {
-      dialog.showModal();
-      });
-      dialog.querySelector('.close').addEventListener('click', function() {
-      dialog.close();
-      });
-      </script>
       <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
