@@ -64,6 +64,10 @@
     font-size: 12px
 }
 
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+    color: #282828;
+}
+
 a.mdl-tabs__tab.is-active {
     text-decoration: underline
 }
